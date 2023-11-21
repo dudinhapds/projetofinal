@@ -1,9 +1,8 @@
 #ifndef APLICATIVOGERENCIADOR_HPP
 #define APLICATIVOGERENCIADOR_HPP
 
-#include "ListaTarefasCompromissos.hpp"
-#include "Notificacoes.hpp"
-#include "Usuario.hpp"
+#include <ListaTarefasCompromissos.hpp>
+#include <Usuario.hpp>
 
 class AplicativoGerenciador {
 public:
