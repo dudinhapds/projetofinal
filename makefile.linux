@@ -54,7 +54,4 @@ $(RELEASE): $(SOURCES) $(HEADERS) $(MAIN)
 $(DEBUG): $(SOURCES) $(HEADERS) $(TESTS) $(TEST)
 	$(CXX) $(CXXFLAGS) $(TEST) $(SOURCES) -I $(INC_DIR) -o $(DEBUG)
 
-# Comando para limpar arquivos temporários e o executável
-clean:
-	rm $(OUTPUT_DIR)/*
 
