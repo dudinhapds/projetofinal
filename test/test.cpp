@@ -180,5 +180,55 @@ SUBCASE("Exemplo de tarefa 3") {
     #undef OUTPUT
 }
 
+TEST_CASE("Testando logins") {
+    // Escopos soltos forçam destrutores a serem chamados //
+
+    #define USERNAME    "TESTUSER"
+    #define SENHA       "senha123"
+
+    {
+        auto result = AutenticadorUsuario::criar(USERNAME, SENHA);
+        REQUIRE(result.has_value());
+    }
+
+    {
+        Chave chave(SENHA), chave2;
+        std::FILE *arquivo = std::fopen("users/" USERNAME ".data", "rb");
+
+        InputStream stream(arquivo, chave);
+        stream.read(&chave2, sizeof(Chave));
+
+        CHECK(chave == chave2);
+    }
+
+    {
+        auto result = AutenticadorUsuario::criar(USERNAME, SENHA);
+        CHECK_FALSE(result.has_value());
+    }
+
+    {
+        auto result = AutenticadorUsuario::autenticar(USERNAME, SENHA);
+        CHECK(result.has_value());
+    }
+
+
+    {
+        auto result = AutenticadorUsuario::autenticar(USERNAME, SENHA "errada");
+        CHECK_FALSE(result.has_value());
+    }
+
+    {
+        auto result = AutenticadorUsuario::autenticar(USERNAME "errado", SENHA);
+        CHECK_FALSE(result.has_value());
+    }
+
+    std::remove("users/" USERNAME ".data");
+
+    #undef USERNAME
+    #undef SENHA
+
+}
+
+
 
 
