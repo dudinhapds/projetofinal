@@ -92,5 +92,23 @@ TEST_CASE("Testando logins") {
     #undef SENHA
 
     }
+    static void testarTarefa(
+    TarefaCompromisso const &tarefa1, TarefaCompromisso *tarefa2,
+    char const *filename, Chave const &chave
+) {
+    {
+        std::FILE *arquivo = std::fopen(filename, "wb");
+        OutputStream ostream(arquivo, chave);
+        
+        tarefa1.serializar(ostream);
+    }
+
+    {
+        std::FILE *arquivo = std::fopen(filename, "rb");
+        InputStream istream(arquivo, chave);
+        
+        tarefa2->deserializar(istream);
+    }
+}
 
 
