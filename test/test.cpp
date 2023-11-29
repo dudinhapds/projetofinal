@@ -159,6 +159,26 @@ TEST_CASE("Testando a serialização de uma tarefa") {
         CHECK_EQ(tarefa1.getPrioridade(), tarefa2.getPrioridade());
         CHECK_EQ(tarefa1.getConcluida(), tarefa2.getConcluida());
     }
+SUBCASE("Exemplo de tarefa 3") {
+        std::time_t now = std::time(nullptr);
+        TarefaCompromisso tarefa1(
+            "Tarefa 3 !!!/", now, TarefaCompromisso::P_MEDIA, true
+        );
+        TarefaCompromisso tarefa2;
+
+        testarTarefa(tarefa1, &tarefa2, OUTPUT, chave);
+
+        CHECK_EQ(tarefa1.getDescricao(), tarefa2.getDescricao());
+        CHECK_EQ(tarefa1.getTimestamp(), tarefa2.getTimestamp());
+        CHECK_EQ(tarefa1.getPrioridade(), tarefa2.getPrioridade());
+        CHECK_EQ(tarefa1.getConcluida(), tarefa2.getConcluida());
+    }
+    
+
+    std::remove(OUTPUT);
+    
+    #undef OUTPUT
+}
 
 
 
