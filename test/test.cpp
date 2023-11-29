@@ -46,3 +46,14 @@ TEST_CASE("Testando a serialização") {
     
     #undef OUTPUT
 }
+TEST_CASE("Testando logins") {
+    // Escopos soltos forçam destrutores a serem chamados //
+
+    #define USERNAME    "TESTUSER"
+    #define SENHA       "senha123"
+
+    {
+        auto result = AutenticadorUsuario::criar(USERNAME, SENHA);
+        REQUIRE(result.has_value());
+    }
+
