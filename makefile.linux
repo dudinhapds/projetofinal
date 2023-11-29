@@ -30,3 +30,23 @@ HEADERS = $(wildcard $(INC_DIR)/*.hpp)
 
 # Lista de arquivos de teste
 TESTS = $(wildcard $(TEST_DIR)/*.cpp)
+# Arquivo main
+MAIN = ./run/main.cpp
+
+# Arquivo de teste
+TEST = ./test/test.cpp
+
+# Comando para construir o projeto
+build: $(RELEASE)
+
+# Comando para executar o programa
+run: $(RELEASE)
+	$(RELEASE)
+
+# Comando para testar o programa
+test: $(DEBUG)
+	$(DEBUG)
+
+# Comando para limpar arquivos temporários e o executável
+clean:
+	rm $(OUTPUT_DIR)/
