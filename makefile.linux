@@ -49,4 +49,5 @@ test: $(DEBUG)
 
 # Comando para limpar arquivos temporários e o executável
 clean:
-	rm $(OUTPUT_DIR)/
+	rm $(OUTPUT_DIR)/*
+
