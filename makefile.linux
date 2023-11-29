@@ -21,3 +21,12 @@ RELEASE = $(OUTPUT_DIR)/gerenciador.run
 
 # Nome do arquivo executável para testar
 DEBUG = $(OUTPUT_DIR)/gerenciador.test
+
+# Lista de arquivos-fonte
+SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
+
+# Lista de arquivos-cabeçalho
+HEADERS = $(wildcard $(INC_DIR)/*.hpp)
+
+# Lista de arquivos de teste
+TESTS = $(wildcard $(TEST_DIR)/*.cpp)
