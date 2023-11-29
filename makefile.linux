@@ -1,1 +1,17 @@
+## Diretório dos arquivos-fonte
+SRC_DIR = ./src
 
+## Diretório dos arquivos-cabeçalho
+INC_DIR = ./include
+
+## Diretório dos arquivos de teste
+TEST_DIR = ./test
+
+## Diretório dos arquivos de saída
+OUTPUT_DIR = ./output
+
+# Compilador C++
+CXX = g++
+
+# Opções de compilação
+CXXFLAGS = -std=c++17 -Wall -Werror -D_CORES
