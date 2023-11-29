@@ -110,5 +110,25 @@ TEST_CASE("Testando logins") {
         tarefa2->deserializar(istream);
     }
 }
+TEST_CASE("Testando a serialização de uma tarefa") {
+    #define OUTPUT  "output/test2.tmp"
+
+    Chave chave("senha");
+
+    SUBCASE("Exemplo de tarefa 1") {
+        std::time_t now = std::time(nullptr);
+        TarefaCompromisso tarefa1(
+            "Tarefa 1", now, TarefaCompromisso::P_ALTA, true
+        );
+        TarefaCompromisso tarefa2;
+
+        testarTarefa(tarefa1, &tarefa2, OUTPUT, chave);
+
+        CHECK_EQ(tarefa1.getDescricao(), tarefa2.getDescricao());
+        CHECK_EQ(tarefa1.getTimestamp(), tarefa2.getTimestamp());
+        CHECK_EQ(tarefa1.getPrioridade(), tarefa2.getPrioridade());
+        CHECK_EQ(tarefa1.getConcluida(), tarefa2.getConcluida());
+    }
+
 
 
