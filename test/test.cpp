@@ -56,4 +56,14 @@ TEST_CASE("Testando logins") {
         auto result = AutenticadorUsuario::criar(USERNAME, SENHA);
         REQUIRE(result.has_value());
     }
+    {
+        Chave chave(SENHA), chave2;
+        std::FILE *arquivo = std::fopen("users/" USERNAME ".data", "rb");
+
+        InputStream stream(arquivo, chave);
+        stream.read(&chave2, sizeof(Chave));
+
+        CHECK(chave == chave2);
+    }
+
 
