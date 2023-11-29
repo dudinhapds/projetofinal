@@ -65,5 +65,32 @@ TEST_CASE("Testando logins") {
 
         CHECK(chave == chave2);
     }
+    {
+        auto result = AutenticadorUsuario::criar(USERNAME, SENHA);
+        CHECK_FALSE(result.has_value());
+    }
+
+    {
+        auto result = AutenticadorUsuario::autenticar(USERNAME, SENHA);
+        CHECK(result.has_value());
+    }
+
+
+    {
+        auto result = AutenticadorUsuario::autenticar(USERNAME, SENHA "errada");
+        CHECK_FALSE(result.has_value());
+    }
+
+    {
+        auto result = AutenticadorUsuario::autenticar(USERNAME "errado", SENHA);
+        CHECK_FALSE(result.has_value());
+    }
+
+    std::remove("users/" USERNAME ".data");
+
+    #undef USERNAME
+    #undef SENHA
+
+    }
 
 
