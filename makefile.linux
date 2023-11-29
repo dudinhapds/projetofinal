@@ -15,3 +15,9 @@ CXX = g++
 
 # Opções de compilação
 CXXFLAGS = -std=c++17 -Wall -Werror -D_CORES
+
+# Nome do arquivo executável para rodar
+RELEASE = $(OUTPUT_DIR)/gerenciador.run
+
+# Nome do arquivo executável para testar
+DEBUG = $(OUTPUT_DIR)/gerenciador.test
