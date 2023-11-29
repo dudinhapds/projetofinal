@@ -24,3 +24,4 @@
 # https://www.gnu.org/software/libiconv/ for the list of possible encodings.
 # The default value is: UTF-8.
 
+DOXYFILE_ENCODING      = UTF-8
