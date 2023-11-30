@@ -1,5 +1,8 @@
 #include <Usuario.hpp>
 
+Usuario::Usuario(std::string const &nome)
+: nome(nome), listaTarefas(), preferencias() {}
+
 Usuario::Usuario(
     std::string const &nome,
     ListaTarefasCompromissos const &lista
