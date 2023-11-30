@@ -1,4 +1,3 @@
-
 #ifdef _CORES
 
     #define RESET   "\033[m"
