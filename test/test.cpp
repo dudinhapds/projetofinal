@@ -46,6 +46,7 @@ TEST_CASE("Testando a serialização") {
     
     #undef OUTPUT
 }
+
 TEST_CASE("Testando logins") {
     // Escopos soltos forçam destrutores a serem chamados //
 
@@ -56,6 +57,7 @@ TEST_CASE("Testando logins") {
         auto result = AutenticadorUsuario::criar(USERNAME, SENHA);
         REQUIRE(result.has_value());
     }
+
     {
         Chave chave(SENHA), chave2;
         std::FILE *arquivo = std::fopen("users/" USERNAME ".data", "rb");
@@ -65,6 +67,7 @@ TEST_CASE("Testando logins") {
 
         CHECK(chave == chave2);
     }
+
     {
         auto result = AutenticadorUsuario::criar(USERNAME, SENHA);
         CHECK_FALSE(result.has_value());
@@ -91,7 +94,8 @@ TEST_CASE("Testando logins") {
     #undef USERNAME
     #undef SENHA
 
-    }
+}
+
 static void testarTarefa(
     TarefaCompromisso const &tarefa1, TarefaCompromisso *tarefa2,
     char const *filename, Chave const &chave
@@ -110,6 +114,7 @@ static void testarTarefa(
         tarefa2->deserializar(istream);
     }
 }
+
 TEST_CASE("Testando a serialização de uma tarefa") {
     #define OUTPUT  "output/test2.tmp"
 
@@ -129,6 +134,7 @@ TEST_CASE("Testando a serialização de uma tarefa") {
         CHECK_EQ(tarefa1.getPrioridade(), tarefa2.getPrioridade());
         CHECK_EQ(tarefa1.getConcluida(), tarefa2.getConcluida());
     }
+
     SUBCASE("Exemplo de tarefa 2") {
         std::tm tm {
             .tm_sec = 0,
@@ -159,6 +165,7 @@ TEST_CASE("Testando a serialização de uma tarefa") {
         CHECK_EQ(tarefa1.getPrioridade(), tarefa2.getPrioridade());
         CHECK_EQ(tarefa1.getConcluida(), tarefa2.getConcluida());
     }
+
     SUBCASE("Exemplo de tarefa 3") {
         std::time_t now = std::time(nullptr);
         TarefaCompromisso tarefa1(
@@ -173,14 +180,9 @@ TEST_CASE("Testando a serialização de uma tarefa") {
         CHECK_EQ(tarefa1.getPrioridade(), tarefa2.getPrioridade());
         CHECK_EQ(tarefa1.getConcluida(), tarefa2.getConcluida());
     }
-
     
+
     std::remove(OUTPUT);
     
     #undef OUTPUT
 }
-
-
-
-
-
