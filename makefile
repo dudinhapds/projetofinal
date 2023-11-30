@@ -1,8 +1,6 @@
 ## Diretório dos arquivos-fonte
 SRC_DIR = .\src
 
-
-
 ## Diretório dos arquivos-cabeçalho
 INC_DIR = .\include
 
