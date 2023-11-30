@@ -74,7 +74,7 @@ public:
      * de filtragem.
      * @param prioridade Prioridade a ser filtrada.
      */
- void filtrarPrioridade(
+    void filtrarPrioridade(
         PreferenciasLista &preferencias,
         TarefaCompromisso::Prioridade prioridade
     );
