@@ -62,11 +62,15 @@ PreferenciasLista::Comparador PreferenciasLista::getComparador() const {
 }
 
 void PreferenciasLista::serializar(OutputStream &stream) const {
-    stream.write(&concluidas, sizeof(bool));
-    stream.write(&passadas, sizeof(bool));
+    stream.write(&concluidas, sizeof(concluidas));
+    stream.write(&passadas, sizeof(passadas));
+    stream.write(prioridades, sizeof(prioridades));
+    stream.write(&ordem, sizeof(ordem));
 }
 
 void PreferenciasLista::deserializar(InputStream &stream) {
-    stream.read(&concluidas, sizeof(bool));
-    stream.read(&passadas, sizeof(bool));
+    stream.read(&concluidas, sizeof(concluidas));
+    stream.read(&passadas, sizeof(passadas));
+    stream.read(prioridades, sizeof(prioridades));
+    stream.read(&ordem, sizeof(ordem));
 }
