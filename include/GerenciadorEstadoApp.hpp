@@ -74,3 +74,81 @@ public:
      * de filtragem.
      * @param prioridade Prioridade a ser filtrada.
      */
+ void filtrarPrioridade(
+        PreferenciasLista &preferencias,
+        TarefaCompromisso::Prioridade prioridade
+    );
+
+    /**
+     * @brief Estado da tela de listagem/reordenação de tarefas/compromissos.
+     * @param usuario Referência ao usuário logado.
+     */
+    void reordenarTarefasCompromissos(Usuario &usuario);
+    /**
+     * @brief Define a ordem da lista por Data/Hora (crescente), e reordena.
+     * @param preferencias Referência ao objeto que guarda as preferências
+     * de reordenação.
+     * @param lista Referência à lista de tarefas/compromissos a ser
+     * reordenada.
+     */
+    void reordenarData(
+        PreferenciasLista &preferencias, ListaTarefasCompromissos &lista);
+    /**
+     * @brief Define a ordem da lista por Data/Hora (decrescente), e reordena.
+     * @param preferencias Referência ao objeto que guarda as preferências
+     * de reordenação.
+     * @param lista Referência à lista de tarefas/compromissos a ser
+     * reordenada.
+     */
+    void reordenarDataDecr(
+        PreferenciasLista &preferencias, ListaTarefasCompromissos &lista);
+    /**
+     * @brief Define a ordem da lista por Prioridade (crescente), e reordena.
+     * @param preferencias Referência ao objeto que guarda as preferências
+     * de reordenação.
+     * @param lista Referência à lista de tarefas/compromissos a ser
+     * reordenada.
+     */
+    void reordenarPrioridade(
+        PreferenciasLista &preferencias, ListaTarefasCompromissos &lista);
+    /**
+     * @brief Define a ordem da lista por Prioridade (decrescente), e reordena.
+     * @param preferencias Referência ao objeto que guarda as preferências
+     * de reordenação.
+     * @param lista Referência à lista de tarefas/compromissos a ser
+     * reordenada.
+     */
+    void reordenarPrioridadeDecr(
+        PreferenciasLista &preferencias, ListaTarefasCompromissos &lista);
+
+    /**
+     * @brief Estado da tela de edição de uma tarefa/compromisso.
+     * @param usuario Referência ao usuário logado.
+     * @param tarefa Referência à tarefa/compromisso a ser editada.
+     */
+    void menuEditarTarefa(Usuario &usuario, TarefaCompromisso &tarefa);
+    /**
+     * @brief Edita a descrição de uma tarefa/compromisso.
+     * @param tarefa Referência à tarefa/compromisso a ser editada.
+     */
+    void editarDescricao(TarefaCompromisso &tarefa);
+    /**
+     * @brief Edita a data e hora de uma tarefa/compromisso.
+     * @param tarefa Referência à tarefa/compromisso a ser editada.
+     */
+    void editarDataHora(TarefaCompromisso &tarefa);
+    /**
+     * @brief Edita a prioridade de uma tarefa/compromisso. Esta função alterna
+     * entre as prioridades possíveis, em cada chamada.
+     * @param tarefa Referência à tarefa/compromisso a ser editada.
+     */
+    void editarPrioridade(TarefaCompromisso &tarefa);
+    /**
+     * @brief Edita o status de conclusão de uma tarefa/compromisso. Esta
+     * função alterna entre concluída e não concluída, em cada chamada.
+     * @param tarefa Referência à tarefa/compromisso a ser editada.
+     */
+    void editarConcluida(TarefaCompromisso &tarefa);
+};
+
+#endif // GERENCIADORESTADOAPP_HPP
