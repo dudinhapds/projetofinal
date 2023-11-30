@@ -3,7 +3,10 @@
 
 std::optional<SerializadorUsuario> AutenticadorUsuario::autenticar(
     std::string const &nome, std::string const &senha
-) {
+) 
+
+
+{
     Chave chave(senha);
     std::string nome_arquivo = "users/" + nome + ".data";
     std::FILE *arquivo = std::fopen(nome_arquivo.c_str(), "rb");
