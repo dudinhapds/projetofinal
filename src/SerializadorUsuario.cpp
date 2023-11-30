@@ -8,16 +8,17 @@ SerializadorUsuario::SerializadorUsuario(std::string const &nome_arquivo, Chave 
 
 SerializadorUsuario::~SerializadorUsuario() {}
 
-void SerializadorUsuario::serializar(ListaTarefasCompromissos const &lista) {
+void SerializadorUsuario::serializar(Usuario const &usuario) {
     std::FILE *arquivo = std::fopen(nome_arquivo.c_str(), "wb");
     if (!arquivo) std::exit(1);
     OutputStream stream(arquivo, chave);
     stream.write(&chave, sizeof(Chave));
     
-    lista.serializar(stream);
+    usuario.preferencias.serializar(stream);
+    usuario.listaTarefas.serializar(stream);
 }
 
-ListaTarefasCompromissos SerializadorUsuario::deserializar() {
+void SerializadorUsuario::deserializar(Usuario *usuario) {
     std::FILE *arquivo = std::fopen(nome_arquivo.c_str(), "rb");
     if (!arquivo) std::exit(1);
     InputStream stream(arquivo, chave);
@@ -26,7 +27,6 @@ ListaTarefasCompromissos SerializadorUsuario::deserializar() {
     stream.read(&chave_arquivo, sizeof(Chave));
     if (chave_arquivo != chave) std::exit(1);
     
-    ListaTarefasCompromissos lista;
-    lista.deserializar(stream);
-    return lista;
+    usuario->preferencias.deserializar(stream);
+    usuario->listaTarefas.deserializar(stream);
 }
