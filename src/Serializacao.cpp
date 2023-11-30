@@ -7,7 +7,8 @@ static std::uint64_t constexpr INICIAL = 0x3D9CA05D5422EDE9L;
 static std::uint64_t constexpr EMBARALHA = 0xECD96C09EEFC5F6DL;
 static std::uint64_t constexpr MULT = 709;
 
-Chave::Chave(std::string const &senha) {
+Chave::Chave(std::string const &senha) 
+{
     std::uint64_t hash = INICIAL;
     for (char c : senha) {
         hash = (hash * MULT) + (c * EMBARALHA);
@@ -15,7 +16,8 @@ Chave::Chave(std::string const &senha) {
     valor = hash;
 }
 
-bool Chave::operator==(Chave const &outra) const {
+bool Chave::operator==(Chave const &outra) const 
+{
     return valor == outra.valor;
 }
 
