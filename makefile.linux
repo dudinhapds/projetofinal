@@ -30,6 +30,7 @@ HEADERS = $(wildcard $(INC_DIR)/*.hpp)
 
 # Lista de arquivos de teste
 TESTS = $(wildcard $(TEST_DIR)/*.cpp)
+
 # Arquivo main
 MAIN = ./run/main.cpp
 
@@ -46,6 +47,11 @@ run: $(RELEASE)
 # Comando para testar o programa
 test: $(DEBUG)
 	$(DEBUG)
+
+# Comando para limpar arquivos temporários e o executável
+clean:
+	rm $(OUTPUT_DIR)/*
+
 # Comando para construir o executável de release
 $(RELEASE): $(SOURCES) $(HEADERS) $(MAIN)
 	$(CXX) $(CXXFLAGS) $(MAIN) $(SOURCES) -I $(INC_DIR) -o $(RELEASE)
@@ -53,5 +59,3 @@ $(RELEASE): $(SOURCES) $(HEADERS) $(MAIN)
 # Comando para construir o executável de debug
 $(DEBUG): $(SOURCES) $(HEADERS) $(TESTS) $(TEST)
 	$(CXX) $(CXXFLAGS) $(TEST) $(SOURCES) -I $(INC_DIR) -o $(DEBUG)
-
-
