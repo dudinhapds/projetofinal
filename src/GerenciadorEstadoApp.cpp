@@ -128,7 +128,8 @@ void GerenciadorEstadoApp::fazerLogin() {
     }
 
     SerializadorUsuario &serializador = *resultado;
-    Usuario usuario = Usuario(nome, serializador.deserializar());
+    Usuario usuario = Usuario(nome);
+    serializador.deserializar(&usuario);
 
     std::cout
         << TELA MENU "Seja bem-vindo, " << usuario.getNome() << "!" RESET "\n"
@@ -138,7 +139,7 @@ void GerenciadorEstadoApp::fazerLogin() {
     std::cout
         << "Salvando alterações...\n"
         << "\n";
-    serializador.serializar(usuario.getListaTarefas());
+    serializador.serializar(usuario);
 }
 
 void GerenciadorEstadoApp::criarConta() {
@@ -174,7 +175,7 @@ void GerenciadorEstadoApp::criarConta() {
     std::cout
         << "Salvando alterações...\n"
         << "\n";
-    serializador.serializar(usuario.getListaTarefas());
+    serializador.serializar(usuario);
 }
 
 void GerenciadorEstadoApp::menuPrincipal(Usuario &usuario) {
